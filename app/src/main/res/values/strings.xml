@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Giuting</string>
+    <string name="give_me_your_writing">Give me your writing</string>
+    <string name="your_name">your name</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="add_a_new_writing">Add a new writing</string>
+    <string name="history">History</string>
+    <string name="plot">plot</string>
+</resources>
