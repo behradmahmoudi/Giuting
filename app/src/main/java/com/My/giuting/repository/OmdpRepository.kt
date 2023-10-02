@@ -2,14 +2,14 @@ package com.My.giuting.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.My.giuting.api.UnsplashApi
+import com.My.giuting.api.OmdpApi
 import androidx.paging.liveData
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UnsplashRepository @Inject constructor(
-    private val unsplashApi: UnsplashApi
+class OmdpRepository @Inject constructor(
+    private val omdpApi: OmdpApi
 ) {
 
     fun getSearchResults(query: String) =
@@ -21,7 +21,7 @@ class UnsplashRepository @Inject constructor(
             ),
             pagingSourceFactory = {
                 UnsplashPagingSource(
-                    unsplashApi,
+                    omdpApi,
                     query
                 )
             }

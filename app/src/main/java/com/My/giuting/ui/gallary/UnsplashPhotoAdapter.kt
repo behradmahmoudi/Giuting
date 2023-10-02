@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.My.giuting.data.UnsplashPhoto
+import com.My.giuting.data.Omdp
 import com.My.giuting.databinding.ItemUnsplashBinding
 
-class UnsplashPhotoAdapter:PagingDataAdapter<UnsplashPhoto, PhotoViewHolder>(PHOTO_COMPARATOR) {
+class UnsplashPhotoAdapter:PagingDataAdapter<Omdp, PhotoViewHolder>(PHOTO_COMPARATOR) {
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val currentItem = getItem(position)
         currentItem?.let { holder.bind(it) }
@@ -23,13 +23,13 @@ class UnsplashPhotoAdapter:PagingDataAdapter<UnsplashPhoto, PhotoViewHolder>(PHO
     }
 
     companion object {
-        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<UnsplashPhoto>(){
-            override fun areItemsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto): Boolean =
-                oldItem.id == newItem.id
+        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<Omdp>(){
+            override fun areItemsTheSame(oldItem: Omdp, newItem: Omdp): Boolean =
+                oldItem.Title == newItem.Title
 
             override fun areContentsTheSame(
-                oldItem: UnsplashPhoto,
-                newItem: UnsplashPhoto
+                oldItem: Omdp,
+                newItem: Omdp
             ): Boolean =
                 oldItem == newItem
 

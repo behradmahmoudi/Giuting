@@ -2,16 +2,16 @@ package com.My.giuting.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.My.giuting.api.UnsplashApi
-import com.My.giuting.data.UnsplashPhoto
+import com.My.giuting.api.OmdpApi
+import com.My.giuting.data.Omdp
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val UNSAPLSH_STARTING_PAGE_INDX = 1
+private const val OMDP_STARTING_PAGE_INDX = 1
 
-class UnsplashPagingSource(private val unsplashApi: UnsplashApi,
-                           private val query: String): PagingSource<Int, UnsplashPhoto>() {
-    override fun getRefreshKey(state: PagingState<Int, UnsplashPhoto>): Int? {
+class UnsplashPagingSource(private val omdpApi: OmdpApi,
+                           private val query: String): PagingSource<Int, Omdp>() {
+    override fun getRefreshKey(state: PagingState<Int, Omdp>): Int? {
         return state.anchorPosition?.let {
                 anchorPos ->
             val anchorPage = state.closestPageToPosition(anchorPos)
@@ -20,16 +20,16 @@ class UnsplashPagingSource(private val unsplashApi: UnsplashApi,
 
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UnsplashPhoto> {
-        val position = params.key ?: UNSAPLSH_STARTING_PAGE_INDX
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Omdp> {
+        val position = params.key ?: OMDP_STARTING_PAGE_INDX
 
         return try {
-            val resoponse = unsplashApi.searchPhoto(query, position, params.loadSize)
+            val resoponse = omdpApi.searchPhoto(query, position)
             val photos = resoponse.results
 
             LoadResult.Page(
                 data = photos,
-                prevKey = if(position == UNSAPLSH_STARTING_PAGE_INDX) null else position - 1,
+                prevKey = if(position == OMDP_STARTING_PAGE_INDX) null else position - 1,
                 nextKey = if(photos.isEmpty()) null else position + 1
             )
         }catch (exception: IOException){

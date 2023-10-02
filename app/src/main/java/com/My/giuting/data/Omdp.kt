@@ -4,10 +4,9 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Unsplashuser(
-    val name: String,
-    val instagram_username: String
-
+data class Omdp(
+    val Title: String,
+    val imdbID: String,
+    val Poster: String
 ):Parcelable {
-
 }
