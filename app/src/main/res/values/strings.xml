@@ -54,4 +54,5 @@
     <string name="omdbapi">omdbapi\n</string>
     <string name="appname">sample app for Dorsa family</string>
     <string name="movie">movie</string>
+    <string name="movieTitle">movie title\n</string>
 </resources>

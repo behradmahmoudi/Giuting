@@ -7,6 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Omdp(
     val Title: String,
     val imdbID: String,
-    val Poster: String
+    val Poster: String,
+    val Year: String,
+    val Type: String
 ):Parcelable {
 }

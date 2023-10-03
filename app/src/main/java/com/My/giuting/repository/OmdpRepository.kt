@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.My.giuting.api.OmdpApi
 import androidx.paging.liveData
+import com.My.giuting.api.MoreInfoResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,8 +16,7 @@ class OmdpRepository @Inject constructor(
     fun getSearchResults(query: String) =
         Pager(
             config = PagingConfig(
-                pageSize = 10,
-                maxSize = 40,
+                pageSize = 2,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
@@ -26,4 +26,9 @@ class OmdpRepository @Inject constructor(
                 )
             }
         ).liveData
+
+    suspend fun getMoreInfoResults(imdb:String):MoreInfoResponse{
+        return omdpApi.moreInfo(imdbId = imdb)
+
+    }
 }

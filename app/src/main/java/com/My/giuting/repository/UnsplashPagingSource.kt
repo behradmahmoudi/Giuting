@@ -25,7 +25,7 @@ class UnsplashPagingSource(private val omdpApi: OmdpApi,
 
         return try {
             val resoponse = omdpApi.searchPhoto(query, position)
-            val photos = resoponse.results
+            val photos = resoponse.Search
 
             LoadResult.Page(
                 data = photos,

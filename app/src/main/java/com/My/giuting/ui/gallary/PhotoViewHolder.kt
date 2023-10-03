@@ -1,5 +1,6 @@
 package com.My.giuting.ui.gallary
 
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.My.giuting.data.Omdp
 import com.My.giuting.databinding.ItemUnsplashBinding
@@ -13,6 +14,14 @@ class PhotoViewHolder(private val binding: ItemUnsplashBinding):RecyclerView.Vie
 
             Glide.with(itemView).load(photo.Poster).transition(DrawableTransitionOptions.withCrossFade()).into(animalImageView)
         }
+
+        binding.animalImageView.setOnClickListener {
+            val action = GalleryFragmentDirections.actionGalleryFragmentToMoreInfoFragment()
+            Navigation.findNavController(binding.root).navigate(action)
+        }
+
+
+
 
     }
 
