@@ -11,6 +11,7 @@ class UnsplashPhotoAdapter:PagingDataAdapter<Omdp, PhotoViewHolder>(PHOTO_COMPAR
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val currentItem = getItem(position)
         currentItem?.let { holder.bind(it) }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {

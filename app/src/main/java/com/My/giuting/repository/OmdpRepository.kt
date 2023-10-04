@@ -27,8 +27,9 @@ class OmdpRepository @Inject constructor(
             }
         ).liveData
 
-    suspend fun getMoreInfoResults(imdb:String):MoreInfoResponse{
-        return omdpApi.moreInfo(imdbId = imdb)
-
+    suspend fun getMoreInfoResults(imdb:String):MoreInfoResponse {
+       return omdpApi.moreInfo(imdbId = imdb)
     }
+
+
 }

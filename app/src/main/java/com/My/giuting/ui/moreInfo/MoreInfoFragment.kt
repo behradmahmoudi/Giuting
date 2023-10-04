@@ -14,11 +14,28 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MoreInfoFragment : Fragment(R.layout.fragment_more_info) {
+    private val arg: MoreInfoFragmentArgs by navArgs()
     private var _binding: FragmentMoreInfoBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<MoreInfoViewModel>()
+    val id = arg.imdbId
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMoreInfoBinding.bind(view)
+
+        viewModel.getMovieDetail(arg.imdbId)
+        viewModel.currentMovie.observe(viewLifecycleOwner){
+            binding.apply {
+                MovieTitle.text = it.Title
+                Year.text = it.Year
+                Runtime.text = it.Runtime
+                Genre.text = it.Genre
+                Director.text = it.Director
+                Actors.text = it.Actors
+                Plot.text = it.Plot
+
+            }
+        }
+
     }
 }

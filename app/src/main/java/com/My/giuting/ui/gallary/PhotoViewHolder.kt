@@ -15,8 +15,9 @@ class PhotoViewHolder(private val binding: ItemUnsplashBinding):RecyclerView.Vie
             Glide.with(itemView).load(photo.Poster).transition(DrawableTransitionOptions.withCrossFade()).into(animalImageView)
         }
 
+
         binding.animalImageView.setOnClickListener {
-            val action = GalleryFragmentDirections.actionGalleryFragmentToMoreInfoFragment()
+            val action = GalleryFragmentDirections.actionGalleryFragmentToMoreInfoFragment(photo.imdbID)
             Navigation.findNavController(binding.root).navigate(action)
         }
 
